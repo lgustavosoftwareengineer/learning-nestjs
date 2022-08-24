@@ -1,1 +1,5 @@
-export class SignUpDTO {}
+import { UserModelWithoutID } from 'src/models';
+
+export class SignUpDTO {
+  user: UserModelWithoutID;
+}

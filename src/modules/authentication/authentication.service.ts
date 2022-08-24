@@ -1,8 +1,12 @@
 import { Injectable } from '@nestjs/common';
+import { UserModelWithoutID } from 'src/models';
+import { UserService } from 'src/services/user.service';
 
 @Injectable()
 export class AuthenticationService {
-  doLogin() {
-    return 'Devo fazer login';
+  userService = new UserService();
+
+  signUp(user: UserModelWithoutID) {
+    return this.userService.create(user);
   }
 }
