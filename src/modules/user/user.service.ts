@@ -1,8 +1,10 @@
+import { Injectable } from '@nestjs/common';
 import { UserModelWithoutID } from 'src/models';
-import { UserRepository } from 'src/repositories/user.repository';
+import { UserRepository } from './repositories/user.repository';
 
+@Injectable()
 export class UserService {
-  userRepository = new UserRepository();
+  private userRepository = new UserRepository();
 
   create(user: UserModelWithoutID) {
     const foundUser = this.userRepository.findByEmail(user.email);

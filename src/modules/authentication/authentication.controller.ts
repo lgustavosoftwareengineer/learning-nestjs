@@ -5,19 +5,19 @@ import {
   HttpStatus,
   Post,
 } from '@nestjs/common';
-import { AuthenticationService } from './authentication.service';
+import { UserService } from 'src/modules/user';
 import { SignUpDTO } from './dtos/sign-up.dto';
 
 @Controller('authentication')
 export class AuthenticationController {
-  constructor(private readonly authenticationService: AuthenticationService) {}
+  constructor(private readonly userService: UserService) {}
 
   @Post('sign-up')
   doSignUp(@Body() signUpDTO: SignUpDTO) {
     const { user } = signUpDTO;
 
     try {
-      this.authenticationService.signUp(user);
+      this.userService.create(user);
     } catch (error) {
       throw new HttpException(error.message, HttpStatus.CONFLICT);
     }
