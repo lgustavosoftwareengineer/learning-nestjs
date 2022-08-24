@@ -5,6 +5,11 @@ import { AuthenticationService } from './authentication.service';
 export class AuthenticationController {
   constructor(private readonly authenticationService: AuthenticationService) {}
 
+  @Post('sign-up')
+  doSignUp(): string {
+    return this.authenticationService.doLogin();
+  }
+
   @Post('login')
   doLogin(): string {
     return this.authenticationService.doLogin();
